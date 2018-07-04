@@ -23,7 +23,8 @@ private slots:
 
     void on_changeBtn_clicked();//是否需要空格按钮事件
 
-    void on_closeBtn_clicked();//关闭按钮事件
+    void changeEvent(QEvent *event); //界面最小化事件
+    //void on_closeBtn_clicked();//关闭按钮事件
     void resizeEvent(QResizeEvent *);//界面大小改变事件
     void closeEvent(QCloseEvent *);//关闭事件
 private slots:
@@ -45,6 +46,7 @@ private:
     QAction *mShowMainAction;
     QAction *mExitAppAction;
 private:
+    void shwoTrayIcon();
     void createActions();
     void createMenu();
 
