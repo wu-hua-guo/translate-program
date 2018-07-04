@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>src/warningt.ico</file>
+        <file>src/folder.ico</file>
+        <file>src/close.ico</file>
+        <file>src/reset.ico</file>
+        <file>src/exchange.ico</file>
+        <file>src/green.jpg</file>
+        <file>src/yellow.jpg</file>
+    </qresource>
+</RCC>
