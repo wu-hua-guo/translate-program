@@ -38,6 +38,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->resetBtn->setIcon(QIcon(":/image/src/reset.ico"));
     ui->transBtn->setIcon(QIcon(":/image/src/exchange.ico"));
 
+    //设置提示符
+    ui->deleteStrEdit->setToolTip(tr("删除特殊字符串"));
+
 
     //设置程序图标
     this->setWindowIcon(icon);
@@ -76,8 +79,9 @@ void MainWindow::on_transBtn_clicked()
     QString newQstr(QString::fromStdU16String(strU16));
     //qDebug()<<newQstr;
 
+    newQstr.replace(ui->deleteStrEdit->text(),"");
     if (this->hasSpace) {
-        newQstr.replace("\n","");
+        newQstr.replace("\t","");
     }else{
         newQstr.replace("\n","").replace(" ","").replace("\t","");
     }
@@ -90,10 +94,10 @@ void MainWindow::on_changeBtn_clicked()
 {
     if (this->hasSpace) {
         this->hasSpace=false;
-        ui->transBtn->setText(tr("无空格转换"));
+        ui->transBtn->setText(tr("换行转换"));
     }else{
         this->hasSpace=true;
-        ui->transBtn->setText(tr("转换"));
+        ui->transBtn->setText(tr("无换行转换"));
     }
 }
 
@@ -123,6 +127,7 @@ void MainWindow::setPos()
 
     //按钮位置
     ui->changeBtn->setGeometry(spaceWidth,uiHeight-40,90,30);
+    ui->deleteStrEdit->setGeometry(spaceWidth+100,uiHeight-40,100,30);
     //ui->resetBtn->setGeometry(uiWidth-335,uiHeight-35,80,25);
     ui->resetBtn->setGeometry(uiWidth-215,uiHeight-40,90,30);
     ui->transBtn->setGeometry(uiWidth-100,uiHeight-40,90,30);
